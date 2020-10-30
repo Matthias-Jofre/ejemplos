@@ -21,7 +21,7 @@ export class ProductController {
   @Get()
   async getAllProducts(@Res() response: Response) {
     try {
-      const products = this._product.getAllProducts();
+      const products = await this._product.getAllProducts();
       if (!products) throw new BadRequestException();
       return response.status(HttpStatus.OK).json({ ok: true, products });
     } catch (error) {
@@ -32,7 +32,7 @@ export class ProductController {
   @Get(':id')
   async getOneProduct(@Res() response: Response, @Param('id') id: string) {
     try {
-      const product = this._product.getOneProduct(id);
+      const product = await this._product.getOneProduct(id);
       if (!product) throw new BadRequestException();
       return response.status(HttpStatus.OK).json({ ok: true, product });
     } catch (error) {
@@ -46,7 +46,7 @@ export class ProductController {
     @Body() createProductDto: CreateProductDto,
   ) {
     try {
-      const product = this._product.createOneProduct(createProductDto);
+      const product = await this._product.createOneProduct(createProductDto);
       if (!product) throw new BadRequestException();
       return response.status(HttpStatus.OK).json({ ok: true, product });
     } catch (error) {
@@ -61,7 +61,7 @@ export class ProductController {
     @Body() updateProductDto: UpdateProductDto,
   ) {
     try {
-      const product = this._product.updateProduct(id, updateProductDto);
+      const product = await this._product.updateProduct(id, updateProductDto);
       if (!product) throw new BadRequestException();
       return response.status(HttpStatus.OK).json({ ok: true, product });
     } catch (error) {
@@ -72,7 +72,7 @@ export class ProductController {
   @Delete(':id')
   async deleteProduct(@Res() response: Response, @Param('id') id: string) {
     try {
-      const product = this._product.deleteProduct(id);
+      const product = await this._product.deleteProduct(id);
       if (!product) throw new BadRequestException();
       return response.status(HttpStatus.OK).json({ ok: true, product });
     } catch (error) {

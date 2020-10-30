@@ -10,7 +10,7 @@ export class Product extends Document {
   description: string;
 
   @Prop({ required: true })
-  imageURL: string;
+  imageUrl: string;
 
   @Prop({ required: true })
   price: number;

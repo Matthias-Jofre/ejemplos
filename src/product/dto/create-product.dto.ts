@@ -4,6 +4,7 @@ import {
   IsNumber,
   IsOptional,
   IsString,
+  IsUrl,
   MinLength,
 } from 'class-validator';
 
@@ -25,9 +26,9 @@ export class CreateProductDto {
   @MinLength(3, {
     message: 'El campo "imageUrl" debe contener al menos 3 caracteres.',
   })
-  @IsString({ message: 'El campo "imageUrl" debe ser string.' })
+  @IsUrl({}, { message: 'El campo "imageUrl" debe ser una url.' })
   @IsNotEmpty({ message: 'El campo "imageUrl" no debe estar vacío.' })
-  readonly imageURL: string;
+  readonly imageUrl: string;
 
   @IsNumber({}, { message: 'El campo "price" debe ser número.' })
   @IsNotEmpty({ message: 'El campo "price" no debe estar vacío.' })
