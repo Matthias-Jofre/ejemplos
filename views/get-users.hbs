@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>App</title>
+</head>
+
+<body>
+  <h2>Se han encontrado los siguientes usuarios:</h2>
+  <ul>
+    {{#each users}}
+    <li>
+      Indice {{@index}}:
+      <ul>
+        <li><b>Rut</b>: {{this.rut}}</li>
+        <li><b>Nombre</b>: {{this.firstname}}</li>
+        <li><b>Apellido</b>: {{this.lastname}}</li>
+        <li><b>Tipo</b>: {{this.role}}</li>
+      </ul>
+      <br>
+    </li>
+    {{/each}}
+  </ul>
+</body>
+
+</html>
