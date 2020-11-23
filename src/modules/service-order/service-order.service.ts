@@ -28,6 +28,5 @@ export class ServiceOrderService {
 
     async getAllServiceOrders(): Promise<ServiceOrder[]> {
         return await this.serviceOrderRepository.find();
-    }
-    
+    }    
 }
