@@ -4,7 +4,7 @@ import { Column, Entity, PrimaryColumn } from "typeorm";
 export class TechnicalEvaluation{
     
     @PrimaryColumn({ type: 'int' })
-    evaluationId!: number;
+    id!: number;
     
     @Column({ type: 'varchar', name: 'descripcion' })
     description!: string;

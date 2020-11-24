@@ -102,4 +102,5 @@ export class UserController {
       return response.status(HttpStatus.BAD_REQUEST).json({ ok: false, error });
     }
   }
+  
 }
