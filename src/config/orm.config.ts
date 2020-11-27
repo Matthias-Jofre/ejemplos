@@ -16,16 +16,4 @@ const typeormConfig: TypeOrmModuleOptions = {
   synchronize: true,
 };
 
-// const typeormConfig: TypeOrmModuleOptions = {
-//   type: 'mysql',
-//   host: 'principaldb1.mysql.database.azure.com',
-//   port: 3306,
-//   username: 'adminDios@principaldb1',
-//   password: '5TKg3loDFsa',
-//   database: 'new_schema',
-//   entities: ["dist/**/*.entity{.ts,.js}"],
-//   synchronize: true,
-//   ssl: { crt: readFileSync('BaltimoreCyberTrustRoot.crt').toString() },
-// };
-
 export default typeormConfig;
