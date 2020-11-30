@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryColumn } from 'typeorm';
+import { Address } from 'src/modules/address/entity/address.entity';
+import { Column, Entity, OneToOne, PrimaryColumn } from 'typeorm';
 
 @Entity('Cliente')
 export class Customer {
@@ -16,4 +17,8 @@ export class Customer {
 
   @Column({ type: 'int', name: 'celular' })
   phonenumber: number;
+
+  @OneToOne(type => Address, addres => addres.customer)
+  address : Address;
+
 }
