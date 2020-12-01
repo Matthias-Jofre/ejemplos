@@ -1,5 +1,5 @@
 import { Customer } from 'src/modules/customer/entity/customer.entity';
-import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('Direccion')
 export class Address {
@@ -15,7 +15,12 @@ export class Address {
   @Column({ type: 'int', name: 'numero_de_calle' })
   street_number!: number;
 
-  @OneToOne(type => Customer, customer => customer.address)
+  @ManyToOne(() => Customer, customer => customer.address, {
+    eager: true,
+    cascade: true
+  })
+  
+  @JoinColumn({name: 'customer_rut'})
   customer : Customer;
 }
 

@@ -13,7 +13,7 @@ const typeormConfig: TypeOrmModuleOptions = {
   database: process.env.DATABASE_NAME,
   entities: ["dist/**/*.entity{.ts,.js}"],
   ssl: { crt: readFileSync('BaltimoreCyberTrustRoot.crt').toString() },
-  synchronize: true,
+  synchronize: false,
 };
 
 export default typeormConfig;

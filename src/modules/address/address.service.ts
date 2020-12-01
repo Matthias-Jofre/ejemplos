@@ -1,6 +1,8 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { CreateCustomerDto } from '../customer/dto';
+import { Customer } from '../customer/entity/customer.entity';
 import { CreateAddressDto, UpdateAddressDto } from './dto';
 import { Address } from './entity/address.entity';
 
@@ -8,7 +10,7 @@ import { Address } from './entity/address.entity';
 export class AddressService {
   constructor(
     @InjectRepository(Address)
-    private readonly addressRepository: Repository<Address>,
+    private readonly addressRepository: Repository<Address>, 
   ) {}
 
   async getAllAddresses(): Promise<Address[]> {
@@ -27,8 +29,8 @@ export class AddressService {
     );
   }
 
-  async createAddress(createAddressDto: CreateAddressDto): Promise<Address> {
-    const address = this.addressRepository.create(createAddressDto);
+  async createAddress(createAddressDto: CreateAddressDto, customer: Customer): Promise<Address> {
+    const address = this.addressRepository.create({...createAddressDto, customer});
     return this.addressRepository.save(address);
   }
 

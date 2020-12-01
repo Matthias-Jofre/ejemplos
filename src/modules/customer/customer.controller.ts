@@ -23,11 +23,14 @@ import {
 import { CustomerService } from './customer.service';
 import { Response } from 'express';
 import { CreateCustomerDto, UpdateCustomerDto } from './dto';
+import { AddressService } from '../address/address.service';
+import { CreateAddressDto } from '../address/dto';
+import { Customer } from './entity/customer.entity';
 
 @ApiTags('Cliente')
 @Controller('costumer')
 export class CustomerController {
-  constructor(private readonly _customer: CustomerService) {}
+  constructor(private readonly _customer: CustomerService, private readonly _address: AddressService) {}
 
   @ApiOperation({ summary: 'Se trae todos los clientes de la base de datos.' })
   @ApiOkResponse({ description: 'Salió todo correcto.' })
@@ -81,12 +84,12 @@ export class CustomerController {
   @Post()
   async createCustomer(
     @Res() response: Response,
-    @Body() createCustomerDto: CreateCustomerDto,
+    @Body() createDto: {customer: CreateCustomerDto, address: CreateAddressDto} 
   ) {
     try {
-      const customer = await this._customer.createCustomer(createCustomerDto);
-
-      return response.status(HttpStatus.CREATED).json({ ok: true, customer });
+      const customer = await this._customer.createCustomer(createDto.customer);
+      const address = await this._address.createAddress(createDto.address, customer);
+      return response.status(HttpStatus.CREATED).json({ ok: true, customer, address});
     } catch (error) {
       return response.status(HttpStatus.BAD_REQUEST).json({ ok: false, error });
     }

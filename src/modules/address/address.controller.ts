@@ -85,13 +85,13 @@ export class AddressController {
     @Res() response: Response,
     @Body() createAddressDto: CreateAddressDto,
   ) {
-    try {
-      const address = await this._address.createAddress(createAddressDto);
+    // try {
+    //   const address = await this._address.createAddress(createAddressDto);
 
-      return response.status(HttpStatus.CREATED).json({ ok: true, address });
-    } catch (error) {
-      return response.status(HttpStatus.BAD_REQUEST).json({ ok: false, error });
-    }
+    //   return response.status(HttpStatus.CREATED).json({ ok: true, address });
+    // } catch (error) {
+    //   return response.status(HttpStatus.BAD_REQUEST).json({ ok: false, error });
+    // }
   }
 
   @ApiOperation({ summary: 'Actualiza una dirección en la base de datos.' })

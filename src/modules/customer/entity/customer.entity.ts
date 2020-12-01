@@ -1,5 +1,5 @@
 import { Address } from 'src/modules/address/entity/address.entity';
-import { Column, Entity, OneToOne, PrimaryColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryColumn } from 'typeorm';
 
 @Entity('Cliente')
 export class Customer {
@@ -18,7 +18,8 @@ export class Customer {
   @Column({ type: 'int', name: 'celular' })
   phonenumber: number;
 
-  @OneToOne(type => Address, addres => addres.customer)
-  address : Address;
+  @OneToMany(() => Address, addres => addres.customer)
+  
+  address : Address [];
 
 }

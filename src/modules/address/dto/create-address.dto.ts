@@ -34,5 +34,5 @@ export class CreateAddressDto {
   @ApiProperty({ example: 1234 })
   @IsInt({ message: 'El campo "streetNumber" ser un número.' })
   @IsNotEmpty({ message: 'El campo "streetNumber" no debe estar vacío.' })
-  streetNumber!: number;
+  street_number!: number;
 }
