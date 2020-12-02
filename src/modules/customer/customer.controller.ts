@@ -25,7 +25,6 @@ import { Response } from 'express';
 import { CreateCustomerDto, UpdateCustomerDto } from './dto';
 import { AddressService } from '../address/address.service';
 import { CreateAddressDto } from '../address/dto';
-import { Customer } from './entity/customer.entity';
 
 @ApiTags('Cliente')
 @Controller('costumer')
